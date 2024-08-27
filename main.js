@@ -320,3 +320,101 @@ if(flg) {
 }else {
     console.log("No")
 }
+
+
+// 二分探索
+const [N, X] = [15, 47]
+const array = [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
+
+let left = 0
+let right = array.length - 1
+
+let mid
+
+while(left <= right) {
+    mid = Math.floor((left + right) / 2)
+    if(array[mid] === X) {
+        console.log(mid + 1)
+        break
+    }else if(X < array[mid]) {
+        right = mid - 1
+    }else if(array[mid] < X) {
+        left = mid + 1
+    }else{
+        break
+    }
+}
+
+// 半分全列挙
+const N = 3
+const K = 50
+
+const lines = [
+    [3, 9, 17],
+    [4, 7, 9],
+    [10, 20, 30],
+    [1, 2, 3]
+]
+
+let P = []
+let Q = []
+
+for (var i = 0; i < N; i++) {
+    for (var j = 0; j < N; j++) {
+        P.push(lines[0][i] + lines[1][j])
+        Q.push(lines[2][i] + lines[3][j])
+    }
+}
+
+let flg = false
+
+for (var i = 0; i < P.length; i++) {
+    for (var j = 0; j < Q.length; j++) {
+        if(P[i] + Q[j] === K) {
+            flg = true
+            break
+        }
+    }
+}
+
+if(flg) {
+    console.log("Yes")
+}else{
+    console.log("No")
+}
+
+// DP
+let S = "tokyo"
+let T = "kyoto"
+
+let dp = [...Array(S.length + 1)]
+
+dp = dp.map(i => {
+  return i = [...Array(T.length + 1).fill(0)]
+})
+
+S = Array.from(S)
+T = Array.from(T)
+
+console.log(S, T)
+
+for(let i=0; i<=S.length; i++) {
+  for(let j=0; j<=T.length; j++) {
+    if(i === 0 || j === 0) {
+      if(1 <= i) {
+        dp[i][j] = dp[i - 1][j]
+      }
+      if(1 <= j) {
+        dp[i][j] = dp[i][j - 1]
+      }
+    } else {
+      if(S[i - 1] == T[j - 1]) {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1] + 1)
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
+      }
+    }
+  }
+}
+
+console.log('test', dp)
