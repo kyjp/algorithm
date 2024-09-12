@@ -20,3 +20,24 @@ if (foundFlg) {
 } else {
   console.log("No")
 }
+
+const N2 = 5
+const X2 = 40
+
+const A = [10, 20, 30, 40, 50]
+
+let foundFlg2 = false
+
+for(let i = 0; i < N2; i++) {
+    if(X2 === A[i]) {
+        foundFlg2 = true
+        break
+    }
+}
+
+if (foundFlg2) {
+    console.log("Yes")
+  } else {
+    console.log("No")
+  }
+  
