@@ -418,3 +418,18 @@ for(let i=0; i<=S.length; i++) {
 }
 
 console.log('test', dp)
+
+const N = 3000
+const K = 4000
+
+let count = 0
+
+for(let i = 1; i <= N; i++) {
+  for(let j = 1; j <= N; j++) {
+    if(i + j < K && K - i - j <= N) {
+      count++
+    }
+  }
+}
+
+console.log(count)
