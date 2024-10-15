@@ -16,6 +16,7 @@ const D = input.shift().split(" ").map(i => Number(i))
 let AB = []
 let CD = []
 
+// 半分ずつの合計値をだす
 for(let i = 0; i < A.length; i++) {
     for(let j = 0; j < B.length; j++) {
         AB.push(A[i] + B[j])
@@ -32,6 +33,7 @@ let flg = false
 
 CD = CD.sort((a, b) => a < b)
 
+// 二分探索でKに該当するものを探す
 for(let i = 0; i < AB.length; i++) {
     const targetNum = K - AB[i]
     let left = 0
