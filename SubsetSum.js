@@ -29,3 +29,5 @@ if(flg) {
 }else{
     console.log("No")
 }
+
+let total = N
