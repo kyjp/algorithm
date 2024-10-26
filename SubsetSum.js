@@ -18,7 +18,7 @@ for(let i = 1; i <= N; i++) {
             dp[i][j] = "○"
             continue
         }
-        if(dp[i - 1][j - A[i]] === "○") {
+        if(j - A[i] >= 0 &&  dp[i - 1][j - A[i]] === "○") {
             dp[i][j] = "○"
             continue
         }
