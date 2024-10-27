@@ -16,10 +16,6 @@ function Main(input) {
     return total
 }
 
-const convert = (x, y) => {
-    return Math.floor(x / (2 ** y))
-}
-
 class HeapLibrary {
     static buildMaxHeap(arr) {
         let mid = HeapLibrary.parent(arr.length - 1)
