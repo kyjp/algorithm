@@ -2,8 +2,10 @@ function Main(input) {
     input = input.split("\n")
     const [N, M] = input.shift().split(" ").map(i => Number(i))
     let A = input.shift().split(" ").map(i => Number(i))
-    A.sort((a, b) => b - a)
-    const queue = new PriorityQueue(A)
+    const queue = new PriorityQueue([])
+    A.forEach(item => {
+      queue.insert(item)
+    })
     for(let i = 0; i < M; i++) {
         let temp = queue.pop()
         let min = Math.floor(temp / 2 ** 1)
@@ -12,6 +14,10 @@ function Main(input) {
     let total = queue.maxHeap.reduce((a, b) => a + b)
     console.log(total)
     return total
+}
+
+const convert = (x, y) => {
+    return Math.floor(x / (2 ** y))
 }
 
 class HeapLibrary {
