@@ -37,9 +37,10 @@ class Queue {
     }
     pop() {
         if(this.head === null) return null
+        const temp = this.head
         this.head = this.head.next
         if(this.head === null) this.tail = null
-        return this.head
+        return temp.data
     }
     empty() {
         return this.head === null

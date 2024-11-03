@@ -14,16 +14,12 @@ class Node {
     }
 }
 
-class Queue {
+class Stack {
     constructor () {
         this.head = null
     }
-    put(data) {
+    push(data) {
         if(data === null) return
-        if(this.head === null) {
-            this.head = new Node(data)
-            return 
-        }
         const next = this.head
         this.head = new Node(data)
         this.head.next = next
@@ -35,9 +31,9 @@ class Queue {
         }
         let temp = this.head
         this.head = this.head.next
-        return temp
+        return temp.data
     }
-    answer() {
+    top() {
         if(this.head === null) {
             return null
         }
@@ -47,19 +43,19 @@ class Queue {
 
  const Q = Number(input.shift())
 
- const queue = new Queue()
+ const stack = new Stack()
 
  for(let i = 0; i < Q; i++) {
     const q = input.shift().split(" ")
     switch (q[0]) {
         case "1":
-            queue.put(q[1])
+            stack.push(q[1])
             break
         case "2":
-            console.log(queue.answer())
+            console.log(stack.top())
             break
         case "3":
-            queue.pop()
+            stack.pop()
             break
         default:
             break
