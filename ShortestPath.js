@@ -43,30 +43,31 @@ const bfs = (graph, startVertex) => {
         const currentVertex = queue.shift()
         result.push(currentVertex)
         for(const neighbor of graph.getEdges(currentVertex)) {
-            if(!visited.hs(neighbor)) {
+            if(!visited.has(neighbor)) {
                 queue.push(neighbor)
                 visited.add(neighbor)
             }
         }
     }
-    return result
+    return visited
 }
 
-// const graph = new Graph();
+const graph = new Graph()
 
-// // 頂点の追加
-// graph.addVertex('A');
-// graph.addVertex('B');
-// graph.addVertex('C');
-// graph.addVertex('D');
-// graph.addVertex('E');
+const [N, W] = input.shift().split(" ").map(i => Number(i)) 
 
-// // 辺の追加
-// graph.addEdge('A', 'B');
-// graph.addEdge('A', 'C');
-// graph.addEdge('B', 'D');
-// graph.addEdge('C', 'E');
+for(const line of input) { 
+    const [A, B] = line.split(" ").map(Number)
+    graph.addVertex(A)
+    graph.addVertex(B)
+    graph.addEdge(A, B)
+}
 
 // // BFSを実行
-// const bfsResult = bfs(graph, 'A');
-// console.log(bfsResult); 
+const bfsResult = bfs(graph, 1)
+console.log(bfsResult)
+if (bfsResult.size === N) {
+    console.log("The graph is connected");
+} else {
+    console.log("The graph is not connected");
+}
